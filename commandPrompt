@@ -1,5 +1,0 @@
-term.clear()
-term.setCursorPos(1,1)
-print("Welcome to the CosgOS command prompt!")
-print("Type \"back\" to go back to the main menu.")
-shell.run("shell")
