@@ -8,6 +8,8 @@ local option = 1
 local scrollOffset = 0
 local version = "1.0"
 local index = {}
+local favoriteFile = fs.open("cosgOS/favorite.txt", "r+")
+local favorite = favoriteFile.readAll()
 
 for i = 1, applicationNum do
     index[applications[i]] = i
@@ -44,14 +46,22 @@ term.setCursorPos(1,1)
 term.write("CosgOS version "..version)
     printCenterX("Back", screenH/2-scrollOffset*2)
     for i = 1, applicationNum do
-        printCenterX(applications[i]:sub(21), (screenH/2)+(i*2)-(scrollOffset*2))
+        if favorite ~= applications[i]:sub(21) then
+            printCenterX(applications[i]:sub(21), (screenH/2)+(i*2)-(scrollOffset*2))
+        else
+            printCenterX("*"..applications[i]:sub(21), (screenH/2)+(i*2)-(scrollOffset*2))
+        end
     end
 -- change drawn menu based on selected option
 
     if option == 1 then
         printCenterX("[ Back ]", screenH/2-scrollOffset*2)
     elseif option-1 == index[applications[option-1]] then
-        printCenterX("[ "..applications[option-1]:sub(21).." ]", screenH/2+option*2-2-(scrollOffset*2))
+        if favorite ~= applications[option-1]:sub(21) then
+            printCenterX("[ "..applications[option-1]:sub(21).." ]", screenH/2+option*2-2-(scrollOffset*2))
+        else
+            printCenterX("[*"..applications[option-1]:sub(21).." ]", screenH/2+option*2-2-(scrollOffset*2))
+        end
     end
     if option > scrollOffset+4 then
         scrollOffset = scrollOffset+1
@@ -75,6 +85,10 @@ function input()
             shell.run(applications[option-1])
         elseif key == "enter" and option == 1 then
             os.reboot()
+        elseif key == "leftShift" and option ~= 1 then
+            favoriteFile = fs.open("cosgOS/favorite.txt", "w+")
+            favoriteFile.write(applications[option-1]:sub(21))
+            favoriteFile.close()
         end
         
         

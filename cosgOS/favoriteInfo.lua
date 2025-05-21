@@ -1,0 +1,8 @@
+term.clear()
+term.setCursorPos(1,1)
+print("This is the favorite tab.")
+print("")
+print("Press Left Shift in the application menu to select your favorite")
+print("")
+print("Your favorite program will be added to the home screen.")
+sleep(10)

@@ -4,7 +4,14 @@ term.setCursorPos(1,1)
 local screenW, screenH = term.getSize()
 local option = 1
 local version = "1.0"
-
+local favoriteFile = fs.open("cosgOS/favorite.txt", "r")
+local favorite = favoriteFile.readAll()
+local favoriteExists
+if favorite and favorite ~= "" then
+    favoriteExists = true
+else
+    favoriteExists = false
+end
 -- Text Utilities
 
     -- Center Text Y
@@ -37,7 +44,11 @@ term.setCursorPos(1,1)
 print("CosgOS version "..version)
     printCenterX("Applications", screenH/2)
     printCenterX("Command Prompt", screenH/2+2)
-    printCenterX("Option 3", screenH/2+4)
+    if favoriteExists then
+        printCenterX(favorite, screenH/2+4)
+    else
+        printCenterX("Favorite", screenH/2+4)
+    end
     printCenterX("Uninstall", screenH/2+6)
     
 -- change drawn menu based on selected option
@@ -47,7 +58,11 @@ print("CosgOS version "..version)
     elseif option == 2 then
         printCenterX("[ Command Prompt ]", screenH/2+2)
     elseif option == 3 then
-        printCenterX("[ Option 3 ]", screenH/2+4)
+        if favoriteExists then
+            printCenterX("[ "..favorite.." ]", screenH/2+4)
+        else
+            printCenterX("[ Favorite ]", screenH/2+4)
+        end
     elseif option == 4 then
         printCenterX("[ Uninstall ]", screenH/2+6)
     end
@@ -68,9 +83,15 @@ function input()
         elseif option == 4 and key == "down" or option == 4 and key == "s" then
             option = 1
         elseif key == "enter" and option == 1 then
-            shell.run("cosgOS/applicationMenu")
+            shell.run("cosgOS/applicationMenu.lua")
         elseif key == "enter" and option == 2 then
-            shell.run("cosgOS/commandPrompt")
+            shell.run("cosgOS/commandPrompt.lua")
+        elseif key == "enter" and option == 3 then
+            if favoriteExists then
+                shell.run("cosgOS/applications/"..favorite)
+            else
+                shell.run("cosgOS/favoriteInfo.lua")
+            end
         end
     end
 
@@ -87,6 +108,7 @@ function input()
         end
     end
 end
+
 
 while true do
 term.clear()
