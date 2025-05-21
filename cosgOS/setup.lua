@@ -9,7 +9,7 @@ else
     version = 0
 end
 -- gets the current version and saves it to the currentVersion file
-shell.run("wget https://github.com/Cosgos/cosgOS/blob/main/cosgOS/version.txt currentVersion.txt")
+shell.run("wget https://raw.githubusercontent.com/Cosgos/cosgOS/main/cosgOS/version.txt currentVersion.txt")
 
 -- sets the currentVersion variable to the version in the currentVersion file
 local file = fs.open("currentVersion.txt", "r")
@@ -34,9 +34,9 @@ if currentVersion ~= version then
     print("Installing new version...")
     shell.run("wget https://raw.githubusercontent.com/Cosgos/cosgOS/main/startup.lua startup.lua")
     shell.run("wget https://raw.githubusercontent.com/Cosgos/cosgOS/main/back.lua back.lua")
-    shell.run("https://raw.githubusercontent.com/Cosgos/cosgOS/main/cosgOS/UI.lua cosgOS/UI.lua")
-    shell.run("https://raw.githubusercontent.com/Cosgos/cosgOS/main/cosgOS/commandPrompt.lua cosgOS/commandPrompt.lua")
-    shell.run("https://raw.githubusercontent.com/Cosgos/cosgOS/main/cosgOS/applicationMenu.lua cosgOS/applicationMenu.lua")
+    shell.run("wget https://raw.githubusercontent.com/Cosgos/cosgOS/main/cosgOS/UI.lua cosgOS/UI.lua")
+    shell.run("wget https://raw.githubusercontent.com/Cosgos/cosgOS/main/cosgOS/commandPrompt.lua cosgOS/commandPrompt.lua")
+    shell.run("wget https://raw.githubusercontent.com/Cosgos/cosgOS/main/cosgOS/applicationMenu.lua cosgOS/applicationMenu.lua")
 
     --Update the version file
     local newVersion = fs.open("localVersion.txt", "w")
