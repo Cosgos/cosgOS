@@ -1,6 +1,6 @@
 -- Checks if the current version file exists, and sets version to the version file
 
-local localVersion = fs.open("localVersion.txt")
+local localVersion = fs.open("localVersion.txt", "r")
 local version
 if localVersion then
     version = localVersion
