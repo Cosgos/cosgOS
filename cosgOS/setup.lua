@@ -1,6 +1,6 @@
 -- Checks if the current version file exists, and sets version to the version file
 
-local localVersion = fs.open("localVersion.txt", "r")
+local localVersion = fs.open("cosgOS/localVersion.txt", "r")
 local version
 if localVersion then
     version = localVersion.readAll()
@@ -9,14 +9,14 @@ else
     version = 0
 end
 -- gets the current version and saves it to the currentVersion file
-shell.run("wget https://raw.githubusercontent.com/Cosgos/cosgOS/main/cosgOS/version.txt currentVersion.txt")
+shell.run("wget https://raw.githubusercontent.com/Cosgos/cosgOS/main/cosgOS/version.txt cosgOS/currentVersion.txt")
 
 -- sets the currentVersion variable to the version in the currentVersion file
-local file = fs.open("currentVersion.txt", "r")
+local file = fs.open("cosgOS/currentVersion.txt", "r")
 local currentVersion = file.readAll()
 file.close()
 
-shell.run("delete currentVersion.txt")
+shell.run("delete cosgOS/currentVersion.txt")
 
 if currentVersion ~= version then
     print("New version detected. Updating.")
@@ -47,7 +47,7 @@ if currentVersion ~= version then
     shell.run("wget https://raw.githubusercontent.com/Cosgos/cosgOS/main/install.lua install.lua")
 
     --Update the version file
-    local newVersion = fs.open("localVersion.txt", "w")
+    local newVersion = fs.open("cosgOS/localVersion.txt", "w")
     newVersion.write(currentVersion)
     newVersion.close()
 end
