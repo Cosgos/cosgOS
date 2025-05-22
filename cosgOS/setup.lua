@@ -52,4 +52,4 @@ if currentVersion ~= version then
     newVersion.close()
 end
 
-shell.run(cosgOS/UI.lua)
+shell.run("cosgOS/UI.lua")
