@@ -3,7 +3,7 @@
 local localVersion = fs.open("localVersion.txt", "r")
 local version
 if localVersion then
-    version = localVersion
+    version = localVersion.readAll()
     localVersion.close()
 else
     version = 0
