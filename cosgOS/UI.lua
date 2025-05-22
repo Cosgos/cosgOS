@@ -92,6 +92,8 @@ function input()
             else
                 shell.run("cosgOS/favoriteInfo.lua")
             end
+        elseif key == "enter" and option == 4 then
+            shell.run("cosgOS/.uninstall")
         end
     end
 

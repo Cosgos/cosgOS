@@ -40,6 +40,7 @@ if currentVersion ~= version then
     shell.run("wget https://raw.githubusercontent.com/Cosgos/cosgOS/main/cosgOS/setup.lua cosgOS/setup.lua")
     shell.run("wget https://raw.githubusercontent.com/Cosgos/cosgOS/main/cosgOS/favoriteInfo.lua cosgOS/favoriteInfo.lua")
     shell.run("wget https://raw.githubusercontent.com/Cosgos/cosgOS/main/cosgOS/favorite.txt cosgOS/favorite.txt")
+    shell.run("wget https://raw.githubusercontent.com/Cosgos/cosgOS/main/cosgOS/.uninstall.lua cosgOS/.uninstall.lua")
     --Other Files
     shell.run("wget https://raw.githubusercontent.com/Cosgos/cosgOS/main/startup.lua startup.lua")
     shell.run("wget https://raw.githubusercontent.com/Cosgos/cosgOS/main/back.lua back.lua")
