@@ -23,20 +23,27 @@ if currentVersion ~= version then
     --deletes old files
     sleep(1)
     print("Deleting deprecated files...")
+    shell.run("delete cosgOS/")
+    --Delete non-cosgOS files
     shell.run("delete localVersion.txt")
-    shell.run("delete UI.lua")
-    shell.run("delete applicationMenu.lua")
-    shell.run("delete commandPrompt.lua")
     shell.run("delete back.lua")
     shell.run("delete startup.lua")
+    shell.run("delete install.lua")
     --reinstalls the files from github
     sleep(1)
     print("Installing new version...")
-    shell.run("wget https://raw.githubusercontent.com/Cosgos/cosgOS/main/startup.lua startup.lua")
-    shell.run("wget https://raw.githubusercontent.com/Cosgos/cosgOS/main/back.lua back.lua")
+
+    --CosgOS files
     shell.run("wget https://raw.githubusercontent.com/Cosgos/cosgOS/main/cosgOS/UI.lua cosgOS/UI.lua")
     shell.run("wget https://raw.githubusercontent.com/Cosgos/cosgOS/main/cosgOS/commandPrompt.lua cosgOS/commandPrompt.lua")
     shell.run("wget https://raw.githubusercontent.com/Cosgos/cosgOS/main/cosgOS/applicationMenu.lua cosgOS/applicationMenu.lua")
+    shell.run("wget https://raw.githubusercontent.com/Cosgos/cosgOS/main/cosgOS/setup.lua cosgOS/setup.lua")
+    shell.run("wget https://raw.githubusercontent.com/Cosgos/cosgOS/main/cosgOS/favoriteInfo.lua cosgOS/favoriteInfo.lua")
+    shell.run("wget https://raw.githubusercontent.com/Cosgos/cosgOS/main/cosgOS/favorite.txt cosgOS/favorite.txt")
+    --Other Files
+    shell.run("wget https://raw.githubusercontent.com/Cosgos/cosgOS/main/startup.lua startup.lua")
+    shell.run("wget https://raw.githubusercontent.com/Cosgos/cosgOS/main/back.lua back.lua")
+    shell.run("wget https://raw.githubusercontent.com/Cosgos/cosgOS/main/install.lua install.lua")
 
     --Update the version file
     local newVersion = fs.open("localVersion.txt", "w")
