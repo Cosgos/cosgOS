@@ -52,4 +52,4 @@ if currentVersion ~= version then
     newVersion.close()
 end
 
-os.reboot()
+shell.run(cosgOS/UI.lua)
