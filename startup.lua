@@ -1,1 +1,1 @@
-shell.run("cosgOS/UI")
+shell.run("cosgOS/setup.lua")
