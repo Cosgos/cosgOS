@@ -1,7 +1,7 @@
 ## Welcome to the CosgOS operating system
 
 
-To install the cogOS operating system, paste this command into your computerCraft computer. Untested on normal computers, so preferably use an advanced one.
+To install the cosgOS operating system, paste this command into your computerCraft computer. Untested on normal computers, so preferably use an advanced one.
 
 ```lua
 wget run https://raw.githubusercontent.com/Cosgos/cosgOS/main/cosgOS/setup.lua setup.lua
